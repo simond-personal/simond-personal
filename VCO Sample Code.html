@@ -12,7 +12,7 @@
 V.on("payment.success", function(payment){
   //{alert(JSON.stringify(payment)); });
     //{alert(JSON.stringify(payment)); });
-     document.getElementById("adyen").innerHTML = JSON.stringify(payment) };
+     document.getElementById("adyen").innerHTML = JSON.stringify(payment); };
 V.on("payment.cancel", function(payment)
   {alert(JSON.stringify(payment)); });
 V.on("payment.error", function(payment, error)
