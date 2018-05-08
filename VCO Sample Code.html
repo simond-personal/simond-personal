@@ -1,5 +1,6 @@
 <html>
 <head>
+ <script src="http://code.jquery.com/jquery-latest.min.js"></script>
  <script type="text/javascript">
   function onVisaCheckoutReady(){
   V.init( {
@@ -11,20 +12,18 @@
   });
 V.on("payment.success", function(payment)
   //{alert(JSON.stringify(payment)); });
-    {alert(JSON.stringify(payment)); });
+    //{alert(JSON.stringify(payment)); });
+   {var div = document.getElementById('adyen');
+   div.innerHTML += JSON.stringify(payment)};
 V.on("payment.cancel", function(payment)
   {alert(JSON.stringify(payment)); });
 V.on("payment.error", function(payment, error)
   {alert(JSON.stringify(error)); });
-} </script>
+  } </script>
 </head>
 <body>
-  <script>
-  function()
-  {
-    alert("yo");
-  }
-  </script>
+  <div id="adyen">
+  </div>
 <img alt="Visa Checkout" class="v-button" role="button"
 src="https://sandbox.secure.checkout.visa.com/wallet-services-web/xo/button.png"/>
 <script type="text/javascript"
