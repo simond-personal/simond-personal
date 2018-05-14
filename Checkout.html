@@ -6,8 +6,6 @@
   <div id="adyen">
   </div>
 <script>
-function()
-{
   /* https://docs.adyen.com/developers/checkout/web-sdk/customization/translations */
   var translationObject = {
       "payButton" : {
@@ -23,6 +21,25 @@ function()
          "en-GB": "Cardholder Name"
        }
   };
+
+/*  var styleObject = {
+      base: {
+          color: '#000',
+          fontSize: '14px',
+          lineHeight: '14px',
+          fontSmoothing: 'antialiased'
+      },
+      error: {
+          color: 'red'
+      },
+      placeholder: {
+          color: '#d8d8d8',
+          background: 'red'
+      },
+      validated: {
+          color: 'purple'
+      }
+  }; */
 
   var styleObject = {
         placeholder: {
@@ -46,6 +63,7 @@ function()
        translations : translationObject
   };
 
+  /* POST request to /setup call on Checkout SDK */
   data = jQuery.ajax({ //https://www.w3schools.com/jquery/ajax_ajax.asp
           url: 'https://checkout-test.adyen.com/services/PaymentSetupAndVerification/v32/setup',
           beforeSend: function(xhr) {
@@ -72,16 +90,20 @@ function()
                         "shopperEmail": "shopper@adyen.com",
                         "shopperLocale": shopperLocale,
                         "enableRecurring": true,
-                        "sdkVersion": "1.3.0",
+                        //"sdkVersion": "1.3.0",
                         //"sessionValidity": "2018-03-14T23:53:57Z",
                         "countryCode": countryCode
                     }),
                   success: function(data){
                     //chckt.checkout(data, target_div, {"context": "test"});
-                    chckt.checkout(data, adyen, sdkConfigObj);
+                    chckt.checkout(data, target_div, sdkConfigObj);
           }
   });
-}//end function
+
+console.log('');
+console.log('Adyen Checkout demo function loaded. Usage: "demo(amount, currency, countryCode, shopperLocale, target_div)"');
+console.log('example (copy & paste, add quotes around each parameter) ==> demo(13794, GBP, GB, en_US, .adyen)');
+console.log('');
 </script>
 </body>
 </html>
