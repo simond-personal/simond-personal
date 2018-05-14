@@ -1,0 +1,87 @@
+<html>
+<head>
+<script src="https://checkoutshopper-test.adyen.com/checkoutshopper/assets/js/sdk/checkoutSDK.1.3.0.min.js"></script>
+</head>
+<body>
+  <div id="adyen">
+  </div>
+<script>
+function()
+{
+  /* https://docs.adyen.com/developers/checkout/web-sdk/customization/translations */
+  var translationObject = {
+      "payButton" : {
+        "en-GB" : "I agree to pay"
+      },
+       "creditCard.numberField.placeholder" : {
+         "en-GB": "1234 1234 1234 1234"
+       },
+       "creditCard.cvcField.placeholder" : {
+         "en-GB": "123"
+       },
+       "holderName": {
+         "en-GB": "Cardholder Name"
+       }
+  };
+
+  var styleObject = {
+        placeholder: {
+            background: 'white'
+        }
+    };
+
+  /* build config object for chckt.checkout(,,sdkConfigObj) */
+  var sdkConfigObj = {
+       "context": "test",
+       "consolidateCards": true,
+       //initialPMCount": 1
+       paymentMethods: {
+         card: {
+           "showOptionalHolderNameField" : true,
+           "separateDateInputs": true,
+           //"storeDetails": true, //removes save for my next payment checkbox
+           sfStyles: styleObject
+         }
+       },
+       translations : translationObject
+  };
+
+  data = jQuery.ajax({ //https://www.w3schools.com/jquery/ajax_ajax.asp
+          url: 'https://checkout-test.adyen.com/services/PaymentSetupAndVerification/v32/setup',
+          beforeSend: function(xhr) {
+               xhr.setRequestHeader("X-API-Key", "AQEphmfxJ43Kbx1Kw0m/n3Q5qf3VaY9UCJ1/cxwuxpKdIzfqHecIu/I9+90QwV1bDb7kfNy1WIxIIkxgBw==-Q1KDJZPp2RZDY990+AiPOqK/ZDkVRPZ3qiFER56wneo=-kWcKJ7LYAHUJg26T")
+               xhr.setRequestHeader("Content-Type", "application/json")
+          },
+                  dataType: 'json',
+                  type: 'post',
+                  contentType: 'application/json',
+              data: JSON.stringify( {
+                        "amount": {
+                          "currency": currency,
+                          "value": amount
+                        },
+                        "reference": "sd_AccountNumber",
+                        "merchantAccount": "AdyenUKCOM",
+                        "shopperReference": "shopperRef@recurring.test", /* needed for saving cards */
+                        "enableOneClick": true, // "false" removes the "save card details for later button". Also prevents Checkout from displaying saved cards
+                        //"fraudOffset": 99,
+                        "channel": "Web",
+                        "html": true, //set to false for 1.3.0+
+                        "origin": document.location.origin, /* e.g. https://www.merchant.com */
+                        "returnUrl": document.location.origin + "/checkout/result",
+                        "shopperEmail": "shopper@adyen.com",
+                        "shopperLocale": shopperLocale,
+                        "enableRecurring": true,
+                        "sdkVersion": "1.3.0",
+                        //"sessionValidity": "2018-03-14T23:53:57Z",
+                        "countryCode": countryCode
+                    }),
+                  success: function(data){
+                    //chckt.checkout(data, target_div, {"context": "test"});
+                    chckt.checkout(data, adyen, sdkConfigObj);
+          }
+  });
+}//end function
+</script>
+</body>
+</html>
