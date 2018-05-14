@@ -1,12 +1,17 @@
 <html>
 <head>
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-<script src="https://checkoutshopper-test.adyen.com/checkoutshopper/assets/js/sdk/checkoutSDK.1.3.0.min.js"></script>
+    <script src="https://checkoutshopper-test.adyen.com/checkoutshopper/assets/js/sdk/checkoutSDK.1.3.0.min.js"></script>
 </head>
 <body>
+<P>
+  <input type="text" name="amount" id='amount' />
+  <input type="button" value="submit" onclick="callCheckoutSDK()" />
+</P>
   <div class="adyen">
   </div>
 <script>
+function callCheckoutSDK(){
   /* https://docs.adyen.com/developers/checkout/web-sdk/customization/translations */
   var translationObject = {
       "payButton" : {
@@ -58,7 +63,7 @@
               data: JSON.stringify( {
                         "amount": {
                           "currency": "GBP",
-                          "value": "1000"
+                          "value": document.getElementById('amount').value
                         },
                         "reference": "sd_AccountNumber",
                         "merchantAccount": "AdyenUKCOM",
@@ -79,7 +84,7 @@
                     chckt.checkout(data, ".adyen", sdkConfigObj);
           }
   });
-
+}//end callCheckoutSDK
 console.log('');
 console.log('Adyen Checkout demo function loaded. Usage: "demo(amount, currency, countryCode, shopperLocale, target_div)"');
 console.log('example (copy & paste, add quotes around each parameter) ==> demo(13794, GBP, GB, en_US, .adyen)');
