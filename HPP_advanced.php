@@ -2,23 +2,24 @@
     /*
      This PHP code provides a payment form for the Adyen Hosted Payment Pages
      */
-    
+
     /*
      account details
      $skinCode:        the skin to be used
      $merchantAccount: the merchant account we want to process this payment with.
      $sharedSecret:    the shared HMAC key.
      */
-    
-    $skinCode        = "[skin code e.g. GBIMwmE4]";
-    $merchantAccount = "[merchant Account e.g. TestCompanyCOM]";
-    $hmacKey         = "[HMAC key e.g. D21EB2ASD44BA234C8A0AF13CF0BCACA3D4727C6162630D712C857124B213270]";
-    
-    
+
+    $skinCode        = "swiGMYlD";
+    $merchantAccount = "AdyenUKCOM";
+    $hmacKey         = "ACEB6DC6C20717091790FEB6252A0C5B87BF49E97F26528A3A7C32D37C24F806";
+
+//HMAC generated 25 July 2018
+
     /*
      payment-specific details
      */
-    
+
     $params = array(
                     "merchantReference" => "SKINTEST-1435226439255",
                     "merchantAccount"   =>  $merchantAccount,
@@ -29,9 +30,9 @@
                     "shopperLocale"     => "en_GB",
                     "skinCode"          => $skinCode,
                     "brandCode"         => "",
-                    "shopperEmail"      => "test@adyen.com",
-                    "shopperReference"  => "123",
-                    
+                    "shopperEmail"      => "simon@adyen.com",
+                    "shopperReference"  => "simonduong",
+
                     // Shopper information
                     "shopper.firstName"=> "Testperson-nl",
                     "shopper.lastName"=> "Approved",
@@ -41,7 +42,7 @@
                     "shopper.gender"=> "MALE",
                     "shopper.telephoneNumber"=> "0104691602",
                     "shopperIP"=> "62.128.7.69",
-                    
+
                     // Billing Address fields (used for AVS checks)
                     "billingAddress.street" =>"Neherkade",
                     "billingAddress.houseNumberOrName" => "1",
@@ -50,7 +51,7 @@
                     "billingAddress.stateOrProvince" => "NH",
                     "billingAddress.country" => "NL",
                     "billingAddressType" => "",
-                    
+
                     // Delivery/Shipping Address fields
                     "deliveryAddress.street" => "Neherkade",
                     "deliveryAddress.houseNumberOrName" => "1",
@@ -59,28 +60,28 @@
                     "deliveryAddress.stateOrProvince" => "NH",
                     "deliveryAddress.country" => "NL",
                     "deliveryAddressType" => "",
-                    
+
     );
-    
+
     /*
      process fields
      */
-    
+
     // The character escape function
     $escapeval = function($val) {
         return str_replace(':','\\:',str_replace('\\','\\\\',$val));
     };
-    
+
     // Sort the array by key using SORT_STRING order
     ksort($params, SORT_STRING);
-    
+
     // Generate the signing data string
     $signData = implode(":",array_map($escapeval,array_merge(array_keys($params), array_values($params))));
-    
+
     // base64-encode the binary result of the HMAC computation
     $merchantSig = base64_encode(hash_hmac('sha256',$signData,pack("H*" , $hmacKey),true));
     $params["merchantSig"] = $merchantSig;
-    
+
     ?>
 
 
@@ -90,7 +91,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<title>Adyen Payment</title>
+<title>HPP Adv SD - 25 July 2018</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 </head>
 <body>
