@@ -5,7 +5,10 @@
 
     <body>
         <h1>3DS 2.0 test</h1>
-        <script src="threedsSDK.0.9.2.min.js" type="module"></script>
+        <script src="threedsSDK.0.9.2.min.js" type="module">
+            import threedsSDK from './path-to/threedsSDK.js';
+            window.threedsSDK = threedsSDK;
+</script>
     </body>
 
 </html>
