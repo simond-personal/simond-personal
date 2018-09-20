@@ -17,7 +17,7 @@
             {
                             var acsURL = document.getElementById("acsURL").value;
             var cReqData = document.getElementById("cReqData").value;
-                threedsSDK.doChallenge(acsURL, cReqData)
+                threedsSDK.doChallenge(acsURL, "{size : '04'}", cReqData)
             }
         </script>
         
@@ -33,16 +33,8 @@
                 <span class="cc-label-text">cReqData: </span>
                 <input class="cc-input" type="text" id="cReqData" placeholder="cReqData"/>
             </label>
-            <label class="cc-label">
-                <span class="cc-label-text">Expiry year: </span>
-                <input class="cc-input" type="text" id="encryptedExpiryYear" maxlength="4" placeholder="yyyy"/>
-            </label>
-            <label class="cc-label">
-                <span class="cc-label-text">Security code: </span>
-                <input class="cc-input" type="text" id="encryptedSecurityCode" maxlength="4" placeholder="123"/>
-            </label>
         </div>
-        <button id="payBtn" type="button" class="pm-button--submit" onclick="adyenDoChallenge();">doChallenge</button>
+        <button id="challengeBtn" type="button" class="pm-button--submit" onclick="adyenDoChallenge();">doChallenge</button>
     </div>
         
     </body>
