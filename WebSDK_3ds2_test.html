@@ -23,13 +23,19 @@
                 messageType: "CReq"
                 
             };
-                var iframeConfig = "{size : '04'}";
+                var iframeConfig = {
+                    container: "#threedsContainer",
+                    size: "04"
+                };
+                
                 threedsSDK.doChallenge(acsURL, iframeConfig, cReqData)
             }
         </script>
         
         <h1>3DS 2.0 test</h1>
 
+                <div id="threedsContainer" class="threeds-cont" style="width:600px;height:400px;"></div>
+        
         <div class="payment-container">
         <div class="payment-div">
             <label class="cc-label">
