@@ -40,15 +40,15 @@
         <div class="payment-div">
             <label class="cc-label">
                 <span class="cc-label-text">ACS URL: </span>
-                <input class="cc-input" type="text" id="acsURL" placeholder="https://pal-test.adyen.com/threeds2simulator/acs/challenge.shtml"/>
+                <input class="cc-input" type="text" id="acsURL" value="https://pal-test.adyen.com/threeds2simulator/acs/challenge.shtml" placeholder="https://pal-test.adyen.com/threeds2simulator/acs/challenge.shtml"/>
             </label>
                         <label class="3ds2-threeDSServerTransID">
                 <span class="cc-label-text">threeDSServerTransID: </span>
-                <input class="cc-input" type="text" id="threeDSServerTransID" placeholder="threeDSServerTransID"/>
+                <input class="cc-input" type="text" id="threeDSServerTransID" value="cb1d082b-1c66-416b-b8f2-380768e9c548" placeholder="threeDSServerTransID"/>
             </label>
             <label class="cc-label">
                 <span class="cc-label-text">acsTransID: </span>
-                <input class="cc-input" type="text" id="acsTransID" placeholder="acsTransID"/>
+                <input class="cc-input" type="text" id="acsTransID" value="c70feeac-5a7a-420f-80dc-7a931f342a43" placeholder="acsTransID"/>
             </label>
         </div>
         <button id="challengeBtn" type="button" class="pm-button--submit" onclick="adyenDoChallenge();">doChallenge</button>
