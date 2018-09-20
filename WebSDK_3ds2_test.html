@@ -8,17 +8,29 @@
     </head>
 
     <body>
+        
+        <script>
+            var acsURL = document.getElementById("acsURL").value;
+            var cReqData = document.getElementById("cReqData").value;
+            
+            
+            function adyenDoChallenge()
+            {
+                threedsSDK.doChallenge(acsURL, cReqData)
+            }
+        </script>
+        
         <h1>3DS 2.0 test</h1>
 
         <div class="payment-container">
         <div class="payment-div">
             <label class="cc-label">
-                <span class="cc-label-text">Card number: </span>
-                <input class="cc-input" type="text" id="encryptedCardNumber" maxlength="16" placeholder="1234567812345678"/>
+                <span class="cc-label-text">ACS URL: </span>
+                <input class="cc-input" type="text" id="acsURL" placeholder="acsURL"/>
             </label>
             <label class="cc-label">
-                <span class="cc-label-text">Expiry month: </span>
-                <input class="cc-input" type="text" id="encryptedExpiryMonth" maxlength="2" placeholder="mm"/>
+                <span class="cc-label-text">cReqData: </span>
+                <input class="cc-input" type="text" id="cReqData" placeholder="cReqData"/>
             </label>
             <label class="cc-label">
                 <span class="cc-label-text">Expiry year: </span>
@@ -29,7 +41,7 @@
                 <input class="cc-input" type="text" id="encryptedSecurityCode" maxlength="4" placeholder="123"/>
             </label>
         </div>
-        <button id="payBtn" type="button" class="pm-button--submit">Submit</button>
+        <button id="payBtn" type="button" class="pm-button--submit" onclick="adyenDoChallenge();">doChallenge</button>
     </div>
         
     </body>
