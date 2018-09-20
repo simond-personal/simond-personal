@@ -16,7 +16,13 @@
             function adyenDoChallenge()
             {
                             var acsURL = document.getElementById("acsURL").value;
-            var cReqData = document.getElementById("cReqData").value;
+            var cReqData = {
+                threeDSServerTransID: document.getElementById('threeDSServerTransID').value,
+                acsTransID: document.getElementById('acsTransID').value,
+                messageVersion: "2.1.0",
+                messageType: "CReq"
+                
+            };
                 var iframeConfig = "{size : '04'}";
                 threedsSDK.doChallenge(acsURL, iframeConfig, cReqData)
             }
@@ -30,9 +36,13 @@
                 <span class="cc-label-text">ACS URL: </span>
                 <input class="cc-input" type="text" id="acsURL" placeholder="https://pal-test.adyen.com/threeds2simulator/acs/challenge.shtml"/>
             </label>
+                        <label class="3ds2-threeDSServerTransID">
+                <span class="cc-label-text">threeDSServerTransID: </span>
+                <input class="cc-input" type="text" id="threeDSServerTransID" placeholder="threeDSServerTransID"/>
+            </label>
             <label class="cc-label">
-                <span class="cc-label-text">cReqData: </span>
-                <input class="cc-input" type="text" id="cReqData" placeholder="cReqData"/>
+                <span class="cc-label-text">acsTransID: </span>
+                <input class="cc-input" type="text" id="acsTransID" placeholder="acsTransID"/>
             </label>
         </div>
         <button id="challengeBtn" type="button" class="pm-button--submit" onclick="adyenDoChallenge();">doChallenge</button>
