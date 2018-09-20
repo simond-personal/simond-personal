@@ -10,6 +10,28 @@
     <body>
         <h1>3DS 2.0 test</h1>
 
+        <div class="payment-container">
+        <div class="payment-div">
+            <label class="cc-label">
+                <span class="cc-label-text">Card number: </span>
+                <input class="cc-input" type="text" id="encryptedCardNumber" maxlength="16" placeholder="1234567812345678"/>
+            </label>
+            <label class="cc-label">
+                <span class="cc-label-text">Expiry month: </span>
+                <input class="cc-input" type="text" id="encryptedExpiryMonth" maxlength="2" placeholder="mm"/>
+            </label>
+            <label class="cc-label">
+                <span class="cc-label-text">Expiry year: </span>
+                <input class="cc-input" type="text" id="encryptedExpiryYear" maxlength="4" placeholder="yyyy"/>
+            </label>
+            <label class="cc-label">
+                <span class="cc-label-text">Security code: </span>
+                <input class="cc-input" type="text" id="encryptedSecurityCode" maxlength="4" placeholder="123"/>
+            </label>
+        </div>
+        <button id="payBtn" type="button" class="pm-button--submit">Submit</button>
+    </div>
+        
     </body>
 
 </html>
