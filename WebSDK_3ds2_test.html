@@ -10,12 +10,13 @@
     <body>
         
         <script>
-            var acsURL = document.getElementById("acsURL").value;
-            var cReqData = document.getElementById("cReqData").value;
+
             
             
             function adyenDoChallenge()
             {
+                            var acsURL = document.getElementById("acsURL").value;
+            var cReqData = document.getElementById("cReqData").value;
                 threedsSDK.doChallenge(acsURL, cReqData)
             }
         </script>
