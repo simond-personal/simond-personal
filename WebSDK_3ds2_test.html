@@ -17,7 +17,8 @@
             {
                             var acsURL = document.getElementById("acsURL").value;
             var cReqData = document.getElementById("cReqData").value;
-                threedsSDK.doChallenge(acsURL, "{size : '04'}", cReqData)
+                var iframeConfig = "{size : '04'}";
+                threedsSDK.doChallenge(acsURL, iframeConfig, cReqData)
             }
         </script>
         
