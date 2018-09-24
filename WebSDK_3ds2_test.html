@@ -29,10 +29,15 @@
                 messageType: "CReq"
                 
             };
-                var iframeConfig = {
+                                const threedsOverlay = $('#threedsOverlay');
+                const threedsCont = threedsOverlay.find('#threedsContainer')[0];
+                const iframeConfig = {container : threedsCont, size : '04'};
+
+
+                /* var iframeConfig = {
                     container: ".threeds-cont",
                     size: "01"
-                };
+                }; */
                 
                 threedsSDK.doChallenge(acsURL, iframeConfig, cReqData)
             }
