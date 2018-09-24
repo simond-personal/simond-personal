@@ -38,7 +38,9 @@
                     size: "01"
                 };
                 
-                threedsSDK.doChallenge(acsURL, iframeConfig, cReqData)
+                doChallengePromise = threedsSDK.doChallenge(acsURL, iframeConfig, cReqData);
+                
+                console.log(doChallengePromise)
             }
         </script>
         
