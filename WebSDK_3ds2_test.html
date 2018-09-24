@@ -15,10 +15,16 @@
             
             function adyenDoChallenge()
             {
-                            var acsURL = document.getElementById("acsURL").value;
+                            // var acsURL = document.getElementById("acsURL").value;
+                
+                var acsURL = "https://pal-test.adyen.com/threeds2simulator/acs/challenge.shtml";
+                
             var cReqData = {
-                threeDSServerTransID: document.getElementById('threeDSServerTransID').value,
-                acsTransID: document.getElementById('acsTransID').value,
+                threeDSServerTransID: "cb1d082b-1c66-416b-b8f2-380768e9c548",
+                acsTransID: "c70feeac-5a7a-420f-80dc-7a931f342a43",
+                
+                //threeDSServerTransID: document.getElementById('threeDSServerTransID').value,
+                //acsTransID: document.getElementById('acsTransID').value,
                 messageVersion: "2.1.0",
                 messageType: "CReq"
                 
