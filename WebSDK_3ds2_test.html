@@ -30,15 +30,10 @@
                 messageType: "CReq"
                 
             };
-                                const threedsOverlay = $('#threedsOverlay');
-                const threedsCont = threedsOverlay.find('#threedsContainer')[0];
-                const iframeConfig = {container : threedsCont, size : '04'};
-
-
-                /* var iframeConfig = {
-                    container: ".threeds-cont",
+                var iframeConfig = {
+                    container: ".threedsContainer",
                     size: "01"
-                }; */
+                };
                 
                 threedsSDK.doChallenge(acsURL, iframeConfig, cReqData)
             }
@@ -47,7 +42,6 @@
         <h1>3DS 2.0 test</h1>
 
                 <!-- <div id="threedsContainer" class="threeds-cont" style="width:600px;height:400px;"></div> -->
-        <div id="threedsContainer" class="threeds-cont"></div>
         
         <div class="payment-container">
         <div class="payment-div">
@@ -66,7 +60,9 @@
         </div>
         <button id="challengeBtn" type="button" class="pm-button--submit" onclick="adyenDoChallenge();">doChallenge</button>
     </div>
-        
-    </body>
+        <!-- container for iframe -->        
+        <div id="threedsContainer" class="threedsContainer"></div>
+
+    </body> 
 
 </html>
