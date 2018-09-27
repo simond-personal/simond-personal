@@ -46,7 +46,10 @@ var securedFields = csf(
         rootNode: '.cards-div',
         paymentMethods: {
     card: {
-      sfStyles: styleObject
+      sfStyles: styleObject,
+      placeholders : {
+      encryptedCardNumber : '9999 9999 9999 9999'
+      }
     }
         }
     }
