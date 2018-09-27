@@ -45,10 +45,13 @@ var securedFields = csf(
         },
         rootNode: '.cards-div',
         paymentMethods: {
-    card: {
+card: {
       sfStyles: styleObject,
       placeholders : {
-      encryptedCardNumber : '9999 9999 9999 9999'
+      encryptedCardNumber : '9999 9999 9999 9999',
+      encryptedExpiryMonth: 'MONTH',
+      encryptedExpiryYear: 'YEAR',
+      encryptedSecurityCode: 'CVC itches'
       }
     }
         }
