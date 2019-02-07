@@ -1,70 +1,77 @@
 <html>
     <head>
-        <meta charset="utf-8" />
-          <link rel="stylesheet" href="./SD-SF-Styles.css">
-        <script type="text/javascript" src="https://checkoutshopper-test.adyen.com/checkoutshopper/assets/js/sdk/checkoutSecuredFields.1.3.4.min.js"></script>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="SD-SF-Styles.css">
+        <!-- "./styles.css" also works too -->
+        <script type="text/javascript" src="https://checkoutshopper-test.adyen.com/checkoutshopper/assets/js/sdk/checkoutSecuredFields.1.5.1.min.js"></script>
     </head>
-
     <body>
+        <div class="cards-div">
+            <div class="js-chckt-pm__pm-holder">
+                <input type="hidden" name="txvariant" value="card"/>
+                <label>
+                    <span class="input-field" data-cse="encryptedCardNumber"/>
+                </label>
+                <label>
+                    <span class="input-field" data-cse="encryptedExpiryMonth"/>
+                </label>
+                <label>
+                    <span class="input-field" data-cse="encryptedExpiryYear"/>
+                </label>
+                <label>
+                    <span class="input-field" data-cse="encryptedSecurityCode"/>
+                </label>
+            </div>
+        </div>
+        <script type="text/javascript">
+            var styleObject = {
+                base: {
+                    fontSize: '14px'//fontVariant: 'small-caps'
+                },
+                error: {
+                    color: '#f44242'
+                },
+                placeholder: {
+                    color: 'grey'
+                }
+            };
 
-      <div class="cards-div">
+            var securedFields = csf({
+                configObject: {
+                    originKey: "pub.v2.8215161180930179.aHR0cHM6Ly9zaW1vbmQtcGVyc29uYWwuZ2l0aHViLmlv.ak4w_ZMLkV2eU1Grx7jhNL5ew_PFwOTxvouPFL-uxfI",
+                    cardGroupTypes: ['mc', 'visa', 'amex']
+                },
+                rootNode: '.cards-div',
+                paymentMethods: {
+                    card: {
+                        sfStyles: styleObject,
+                        placeholders: {
+                            encryptedCardNumber: '1234 5678 9012 3456',
+                            encryptedExpiryMonth: 'month',
+                            encryptedExpiryYear: 'year',
+                            encryptedSecurityCode: 'cvc'
+                        }
+                    }
+                }
+            });
 
-          <div class="js-chckt-pm__pm-holder">
-             <input type="hidden" name="txvariant" value="card" />
-             <label>
-                 <span class="input-field" data-cse="encryptedCardNumber" />
-             </label>
-             <label>
-                 <span class="input-field" data-cse="encryptedExpiryMonth" />
-             </label>
-             <label>
-                 <span class="input-field" data-cse="encryptedExpiryYear" />
-             </label>
-             <label>
-                 <span class="input-field" data-cse="encryptedSecurityCode" />
-             </label>
-          </div>
-      </div>
+            /* Secured Fields callbacks*/
+            securedFields.onError(function(pCallbackObj) {
+                // Triggered when an error occurs e.g. invalid date
+                console.log(pCallbackObj.error + " onError (typing): " + pCallbackObj.fieldType)
+                console.log(pCallbackObj.error + " onError in field: " + pCallbackObj.fieldType)
+            });
 
-      <script type="text/javascript">
-                              var styleObject = {
-                           base: {
-                                 fontSize: '16px'
-                               },
-                               error: {
-                                     color: '#f44242'
-                               },
-                               placeholder: {
-                                     color: 'red'
-                                }
-                         };
-          
-var securedFields = csf(
-    {
-        configObject : {
-            originKey : "pub.v2.8215161180930179.aHR0cHM6Ly9zaW1vbmQtcGVyc29uYWwuZ2l0aHViLmlv.ak4w_ZMLkV2eU1Grx7jhNL5ew_PFwOTxvouPFL-uxfI",
-            cardGroupTypes: ['mc','visa','amex']
-        },
-        rootNode: '.cards-div',
-        paymentMethods: {
-card: {
-      sfStyles: styleObject,
-      placeholders : {
-      encryptedCardNumber : '9999 9999 9999 9999',
-      encryptedExpiryMonth: 'MONTH',
-      encryptedExpiryYear: 'YEAR',
-      encryptedSecurityCode: 'CVC itches'
-      }
-    }
-        }
-    }
-);
-          securedFields.onAllValid ( function(allValidObject){
-              console.trace();
-});
-          securedFields.onBrand ( function(brandObject){
-});
-</script>
+            securedFields.onFieldValid(function(fieldObject) {
+                console.log(fieldObject.type + " is valid : " + fieldObject.valid)
+            });
+
+            securedFields.onAllValid(function(allValidObject) {
+                console.log("onAllValid: " + allValidObject.allValid)
+            });
+            securedFields.onFocus(function(focusObject) {
+                console.log(focusObject.fieldType + " in focus : " + focusObject.focus)
+            });
+        </script>
     </body>
-
 </html>
