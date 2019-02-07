@@ -1,3 +1,27 @@
-body > div > div > label:nth-child(2) > span > iframe{
-  height: 3%;
+.input-field {
+    border: 1px solid #dedede;
+    border-radius: 90px; /* add curves to the border*/
+    float: left;
+    height: 30px;
+    padding: 0 0 0 10px; /* top|right|bottom|left */
+    margin-top: 10px;
+    position: relative;
+    width: 200px;
 }
+
+.input-field-cardNo{
+    border: 1px solid #a52121;
+    border-radius: 90px; /* add curves to the border*/
+    float: left;
+    height: 30px;
+    padding: 0 0 0 10px; /* top|right|bottom|left */
+    margin-top: 10px;
+    position: relative;
+    width: 200px;
+}
+
+/*.caret {
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid #000000;
+} */
