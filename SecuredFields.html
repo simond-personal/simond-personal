@@ -26,6 +26,7 @@
         <script type="text/javascript">
             var styleObject = {
                 base: {
+                    padding: '5px',
                     fontSize: '14px'//fontVariant: 'small-caps'
                 },
                 error: {
@@ -65,6 +66,11 @@
             securedFields.onFieldValid(function(fieldObject) {
                 console.log(fieldObject.type + " is valid : " + fieldObject.valid)
             });
+
+
+securedFields.onBrand ( function(brandObject){
+    console.log("The brand is: " + brandObject.brand)
+});
 
             securedFields.onAllValid(function(allValidObject) {
                 console.log("onAllValid: " + allValidObject.allValid)
